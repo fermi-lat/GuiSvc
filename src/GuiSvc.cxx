@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.11 2002/09/24 03:57:48 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.12 2002/10/09 14:05:12 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
@@ -119,7 +119,6 @@ StatusCode GuiSvc::initialize ()
         IntegerProperty evtMax("EvtMax",0);
         status = propMgr->getProperty( &evtMax );
         if (status.isFailure()) return status;
-        int max_event = evtMax.value();
         
         setProperty(evtMax);
     }
