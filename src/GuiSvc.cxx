@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.6 2002/03/15 18:55:20 heather Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.7 2002/07/22 12:16:03 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
@@ -13,7 +13,7 @@
 #include "GaudiKernel/Property.h"
 #include "GaudiKernel/IAppMgrUI.h"
 #include "GaudiKernel/SmartIF.h"
-#include "GaudiKernel/IObjmanager.h"
+#include "GaudiKernel/IObjManager.h"
 #include "GaudiKernel/IToolSvc.h"
 #include "GaudiKernel/IToolFactory.h"
 
@@ -153,7 +153,7 @@ StatusCode GuiSvc::initialize ()
 
     }
 
-    return Status::SUCCESS;
+    return StatusCode::SUCCESS;
 }
 
 
