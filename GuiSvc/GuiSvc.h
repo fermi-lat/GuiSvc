@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.2 2001/02/02 05:38:37 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.3 2001/02/06 00:07:00 tlindner Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 
@@ -52,8 +52,10 @@ private:
     friend class SvcFactory<GuiSvc>;
     void beginEvent();
     void endEvent();
+    //
     void queryEvtMax();
     void queryPause();
+
 
     gui::GuiMgr* m_guiMgr;
     float   m_size;
