@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.5 2001/04/18 21:01:21 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.6 2001/09/20 16:09:47 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 
@@ -8,16 +8,19 @@
 // includes
 #include "GaudiKernel/Service.h"
 #include "GaudiKernel/IIncidentListener.h"
+#include "GaudiKernel/IRunable.h"
+
 #include "GuiSvc/IGuiSvc.h"
 
 //forward declarations
 namespace gui { class GuiMgr; }
 template <class TYPE> class SvcFactory;
+class IAppMgrUI;
 
 /*!  
 */
 class GuiSvc :  public Service, virtual public IIncidentListener, 
-                virtual public IGuiSvc
+                virtual public IGuiSvc, virtual public IRunable
 {  
 
 
@@ -46,6 +49,9 @@ public:
    /// Query interface
    virtual StatusCode queryInterface( const IID& riid, void** ppvUnknown );
 
+   // for the IRunnable interfce
+   virtual StatusCode run();
+
 
 protected: 
 
@@ -61,7 +67,13 @@ private:
     //
     void queryEvtMax();
     void queryPause();
+    void queryOutputLevel();
 
+
+
+    /// Reference to application manager UI
+    IAppMgrUI*    m_appMgrUI;
+    int m_evtMax;
 
     gui::GuiMgr* m_guiMgr;
     float   m_size;
