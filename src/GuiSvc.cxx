@@ -2,7 +2,7 @@
 * @file GuiSvc.cxx
 * @brief definition of the class GuiSvc
 *
-*  $Header:  $
+*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.14 2002/10/14 15:15:57 burnett Exp $
 */
 
 #include "GuiSvc/GuiSvc.h"
@@ -170,6 +170,7 @@ StatusCode GuiSvc::initialize ()
                     log << MSG::DEBUG << "Initializing gui stuff in " << tooltype << endreq;
                     dynamic_cast<IGuiTool*>(itool)->initialize(m_guiMgr);
                 }else {
+                    itool->release();
                     tsvc->releaseTool(itool);
                 }
             }
