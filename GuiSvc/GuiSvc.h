@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.1.1.1 2001/01/04 01:03:32 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.2 2001/02/02 05:38:37 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 
@@ -8,6 +8,7 @@
 // includes
 #include "Gaudi/Kernel/Service.h"
 #include "Gaudi/Interfaces/IIncidentListener.h"
+#include "GuiSvc/IGuiSvc.h"
 
 //forward declarations
 namespace gui { class GuiMgr; }
@@ -15,8 +16,8 @@ template <class TYPE> class SvcFactory;
 
 /*!  
 */
-class GuiSvc :  public Service,
-     virtual public IIncidentListener
+class GuiSvc :  public Service, virtual public IIncidentListener, 
+                virtual public IGuiSvc
 {  
 
 
