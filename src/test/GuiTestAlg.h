@@ -1,9 +1,9 @@
-// $Header:  burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/test/GuiTestAlg.h,v 1.1.1.1 2001/01/04 01:03:32 burnett Exp $
 #ifndef GuiTestAlg_H
 #define GuiTestAlg_H
 
 // Include files
-#include "Gaudi/Algorithm/Algorithm.h"
+#include "GaudiKernel/Algorithm.h"
 
 // forward declarations
 namespace gui{ class GuiMgr; }

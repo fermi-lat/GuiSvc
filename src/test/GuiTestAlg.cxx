@@ -1,15 +1,15 @@
-// $Header:  burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/test/GuiTestAlg.cxx,v 1.1.1.1 2001/01/04 01:03:32 burnett Exp $
 
 // Include files
 #include "GuiTestAlg.h"
-#include "GuiSvc/GuiSvc.h"
+#include "GuiSvc/IGuiSvc.h"
 
-#include "Gaudi/MessageSvc/MsgStream.h"
-#include "Gaudi/Kernel/AlgFactory.h"
+#include "GaudiKernel/MsgStream.h"
+#include "GaudiKernel/AlgFactory.h"
 
 #include "src/test/Demo.h"
 #include "gui/GuiMgr.h"
-
+ 
 static const AlgFactory<GuiTestAlg>  Factory;
 const IAlgFactory& GuiTestAlgFactory = Factory;
 
@@ -33,7 +33,7 @@ StatusCode GuiTestAlg::initialize() {
     setProperties();
 
     // get the pointer to the GUI Service 
-    GuiSvc* gsvc;
+    IGuiSvc* gsvc=0;
 
     // get the service
     StatusCode sc = service("GuiSvc", gsvc);

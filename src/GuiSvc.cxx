@@ -1,16 +1,16 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.2 2001/02/02 05:38:37 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.3 2001/03/01 23:48:03 igable Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
 
 #include "GuiSvc/GuiSvc.h"
 
-#include "Gaudi/Kernel/SvcFactory.h"
-#include "Gaudi/MessageSvc/MsgStream.h"
+#include "GaudiKernel/SvcFactory.h"
+#include "GaudiKernel/MsgStream.h"
 
-#include "Gaudi/Kernel/Incident.h"
-#include "Gaudi/Interfaces/IIncidentSvc.h"
-#include "Gaudi/JobOptionsSvc/Property.h"
+#include "GaudiKernel/Incident.h"
+#include "GaudiKernel/IIncidentSvc.h"
+#include "GaudiKernel/Property.h"
 
 // includes for implementing GuiMgr stuff
 #include "gui/GuiMgr.h"
@@ -169,5 +169,16 @@ StatusCode GuiSvc::finalize ()
        
     delete m_guiMgr;
     return status;
+}
+/// Query interface
+StatusCode GuiSvc::queryInterface(const IID& riid, void** ppvInterface)  {
+  if ( IID_IGuiSvc.versionMatch(riid) )  {
+    *ppvInterface = (IGuiSvc*)this;
+  }
+  else  {
+    return Service::queryInterface(riid, ppvInterface);
+  }
+  addRef();
+  return SUCCESS;
 }
 
