@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiMain.cxx,v 1.4 2001/07/04 04:18:46 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiMain.cxx,v 1.5 2001/07/04 04:20:19 burnett Exp $
 
 // Include files
 #include "GaudiKernel/SmartIF.h"
@@ -23,7 +23,7 @@ Specify the job options file location by:
 
 */
 // declare function that may reduce the execution priority
-void setPriority();
+//void setPriority();
 
 int main( int argn, char** argc) {
     
@@ -54,7 +54,7 @@ int main( int argn, char** argc) {
     
     // Run the application manager and process events
     if ( appMgr )   {
-        setPriority();
+      //setPriority();
         status = appMgr->run();
     }
     else  {
