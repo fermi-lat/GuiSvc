@@ -2,7 +2,7 @@
 * @file GuiSvc.cxx
 * @brief definition of the class GuiSvc
 *
-*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.19 2003/07/20 14:34:12 burnett Exp $
+*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.20 2003/12/01 20:49:42 hansl Exp $
 */
 
 #include "GuiSvc/GuiSvc.h"
@@ -45,7 +45,7 @@ GuiSvc::GuiSvc(const std::string& name,ISvcLocator* svc)
     // declare the properties and set defaults
 
     declareProperty ("size", m_size=-3000);
-    declareProperty( "pause_interval", m_pause_interval=-1);
+    declareProperty( "pause_interval", m_pause_interval=0);
     declareProperty( "paused", m_paused=true);
 
     declareProperty("EvtMax", m_evtMax=0xFEEDBABE);
