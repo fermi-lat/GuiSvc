@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.10 2002/08/15 01:51:42 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.11 2002/09/24 03:57:48 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
@@ -90,13 +90,14 @@ StatusCode GuiSvc::initialize ()
 
     sub_menu.addButton("set max event...",
         new SimpleCommand<GuiSvc>(this, &GuiSvc::queryEvtMax));
-
+#if 0 // doesn't work
     m_guiMgr->menu().file_menu().addButton("set OutputLevel...",
         new SimpleCommand<GuiSvc>(this, &GuiSvc::queryOutputLevel));
-
+#endif
+#if 0 // seems to crash on X 
     sub_menu.addButton("Quit Loop",
         new SimpleCommand<GuiSvc>(this, &GuiSvc::quit));
-
+#endif
     sub_menu.addButton("Set Pause interval...", 
         new SimpleCommand<GuiMgr>(m_guiMgr, &GuiMgr::queryPause));
 
