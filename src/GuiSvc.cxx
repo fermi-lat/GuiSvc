@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.4 2001/04/18 21:01:21 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.5 2001/09/20 16:09:48 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
@@ -65,8 +65,7 @@ StatusCode GuiSvc::initialize ()
 
     // use the incident service to register begin, end events
     IIncidentSvc* incsvc = 0;
-    StatusCode sc = serviceLocator()->getService ("IncidentSvc",
-        IID_IIncidentSvc, reinterpret_cast<IInterface*&>( incsvc ));
+    StatusCode sc = service ("IncidentSvc", incsvc, true);
     
     if( status.isFailure() ) return status;
 
@@ -97,9 +96,7 @@ void GuiSvc::queryPause()
 void GuiSvc::queryEvtMax()
 {
     IProperty* glastPropMgr=0;
-    StatusCode status = 
-        serviceLocator()->getService("EventSelector", IID_IProperty,
-                         reinterpret_cast<IInterface*&>( glastPropMgr ));
+    StatusCode status = service("EventSelector", glastPropMgr, true);
     if( status.isFailure() ) return;
       
     IntegerProperty evtMax("EvtMax",0);
@@ -118,9 +115,7 @@ void GuiSvc::queryEvtMax()
 
 void GuiSvc::quit() {
     IProperty* glastPropMgr=0;
-    StatusCode status = 
-        serviceLocator()->getService("EventSelector", IID_IProperty,
-                         reinterpret_cast<IInterface*&>( glastPropMgr ));
+    StatusCode status = service("EventSelector", glastPropMgr, true);
     if( status.isFailure() ) return;
       
     IntegerProperty evtMax("EvtMax",0);
