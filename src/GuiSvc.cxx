@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.8 2002/07/25 08:07:42 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.9 2002/07/27 08:46:50 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
@@ -146,7 +146,7 @@ StatusCode GuiSvc::initialize ()
 
     IToolFactory* toolfactory = 0;
     
-    // search throught all objects (factories?)
+    // search through all object factories for tool factories
     for(IObjManager::ObjIterator it = objManager->objBegin(); it !=objManager->objEnd(); ++ it){
         
         std::string tooltype= (*it)->ident();
@@ -156,18 +156,20 @@ StatusCode GuiSvc::initialize ()
         status = fact->queryInterface( IID_IToolFactory, (void**)&toolfactory );
         if( status.isSuccess() ) {
 
-            // yes: now see if the tool implements the IGuiTool interface
-            IGuiTool* ireg;
-            status = tsvc->retrieveTool(tooltype, ireg);
-            if( status.isSuccess() ){
-                log << MSG::DEBUG << "Initializing gui stuff in " << tooltype << endreq;
-                ireg->initialize(m_guiMgr);
+            // found a tool factory: have it create a tool, and check its interface
+            IAlgTool* itool;
+            status = tsvc->retrieveTool(tooltype, itool);
+            if( status.isSuccess()) { 
+                status =itool->queryInterface( IGuiTool::interfaceID(), (void**)&itool);
+                if( status.isSuccess() ){
+                    log << MSG::DEBUG << "Initializing gui stuff in " << tooltype << endreq;
+                    dynamic_cast<IGuiTool*>(itool)->initialize(m_guiMgr);
+                }else {
+                    tsvc->releaseTool(itool);
+                }
             }
-            
         }
-
     }
-
     return StatusCode::SUCCESS;
 }
 
