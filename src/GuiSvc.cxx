@@ -2,7 +2,7 @@
 * @file GuiSvc.cxx
 * @brief definition of the class GuiSvc
 *
-*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.16 2003/02/09 17:05:47 burnett Exp $
+*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.17 2003/02/10 14:40:43 burnett Exp $
 */
 
 #include "GuiSvc/GuiSvc.h"
@@ -155,10 +155,11 @@ StatusCode GuiSvc::initialize ()
             // found a tool factory: have it create a tool, and check its interface
             std::string fullname = this->name()+"."+tooltype;
             IAlgTool* itool = toolfactory->instantiate(fullname, this );
-            status =itool->queryInterface( IGuiTool::interfaceID(), (void**)&itool);
+            IGuiTool* gtool;
+            status =itool->queryInterface( IGuiTool::interfaceID(), (void**)&gtool);
             if( status.isSuccess() ){
                 log << MSG::DEBUG << "Initializing gui stuff in " << tooltype << endreq;
-                dynamic_cast<IGuiTool*>(itool)->initialize(m_guiMgr);
+                gtool->initialize(m_guiMgr);
             }
             itool->release();
         }
