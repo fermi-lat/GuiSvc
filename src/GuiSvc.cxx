@@ -2,7 +2,7 @@
 * @file GuiSvc.cxx
 * @brief definition of the class GuiSvc
 *
-*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.17 2003/02/10 14:40:43 burnett Exp $
+*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.18 2003/02/18 17:08:28 burnett Exp $
 */
 
 #include "GuiSvc/GuiSvc.h"
@@ -65,6 +65,7 @@ void GuiSvc::pause()
 StatusCode GuiSvc::initialize () 
 {
     using namespace gui;
+    if(state()==INITIALIZED) return StatusCode::SUCCESS;
     StatusCode  status =  Service::initialize ();
 
 

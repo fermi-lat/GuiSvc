@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/test/GuiTestAlg.cxx,v 1.1.1.1 2001/01/04 01:03:32 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/test/GuiTestAlg.cxx,v 1.2 2001/04/18 21:01:22 burnett Exp $
 
 // Include files
 #include "GuiTestAlg.h"
@@ -6,6 +6,7 @@
 
 #include "GaudiKernel/MsgStream.h"
 #include "GaudiKernel/AlgFactory.h"
+#include "GaudiKernel/IService.h"
 
 #include "src/test/Demo.h"
 #include "gui/GuiMgr.h"
@@ -44,6 +45,11 @@ StatusCode GuiTestAlg::initialize() {
     }
     // now get the gui manager and set up the demo from gui.
     m_guiMgr = gsvc->guiMgr();
+    if( m_guiMgr==0){ 
+        gsvc->initialize();
+     //   dynamic_cast<IService*>(gsvc)->initialize();
+        m_guiMgr = gsvc->guiMgr();
+    }
 
     m_demo = new Demo(m_guiMgr->display());
 
