@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.6 2001/09/20 16:09:47 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.7 2002/07/22 12:16:03 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 
@@ -66,7 +66,6 @@ private:
     void endEvent();
     //
     void queryEvtMax();
-    void queryPause();
     void queryOutputLevel();
 
 
