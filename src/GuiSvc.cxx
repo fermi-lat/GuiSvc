@@ -1,4 +1,4 @@
-// $Header: 08 04:29:20 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.1.1.1 2001/01/04 01:03:32 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
@@ -33,15 +33,10 @@ GuiSvc::GuiSvc(const std::string& name,ISvcLocator* svc)
     
     // declare the properties and set defaults
 
-    declareProperty ("size", m_size=-200);
+    declareProperty ("size", m_size=-300);
     declareProperty( "pause_interval", m_pause_interval=0);
     declareProperty( "paused", m_paused=true);
 
-}
-
-/// Standard Destructor
-GuiSvc::~GuiSvc()  
-{
 }
 
 

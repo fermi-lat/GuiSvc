@@ -1,4 +1,4 @@
-// $Header:  22:54:50 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.1.1.1 2001/01/04 01:03:32 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 
@@ -45,8 +45,6 @@ protected:
     /// Standard Constructor
     GuiSvc ( const std::string& name, ISvcLocator* al );
     
-    /// destructor
-    virtual ~GuiSvc ();
 
 private:
     // Allow SvcFactory to instantiate the service.
