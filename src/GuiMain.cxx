@@ -1,4 +1,4 @@
-// $Header:  burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/test/GuiTestMain.cxx,v 1.2 2001/03/20 19:01:20 burnett Exp $
 
 // Include files
 #include "Gaudi/Kernel/SmartIF.h"
@@ -15,19 +15,27 @@
 //  Description: Graphics Main Program
 //
 //------------------------------------------------------------------------------
+/**
+  Standard Glast-Gaudi main.
+  Specify the job options file location by:
+  1) specification, local or global, on command line.
+  2) content of env var JOBOPTIONS
+  3) src/jobOPtions
 
-extern void GuiSvc_load();
-
+  */
 int main( int argn, char** argc) {
 
-    if(0) GuiSvc_load(); // make sure in executable
-    // get the path to this package from its root environment variable: if not there,
-    // assume that we are in the root
-    const char * local_path = ::getenv("GUISVCROOT");
-    std::string joboptions_file = std::string(local_path? local_path: "");
+    std::string joboptions_file;
 
-    joboptions_file +=  std::string("/src/test/jobOptions.txt");
-    
+    // is ther a job options env var defined?
+    const char * job = ::getenv("JOBOPTIONS");
+
+    if( argn>1 ) {job = argc[1];}
+    else if( job ) { joboptions_file = job; }
+    else {
+        // no args, JOBOPTIONS var: assume this.
+        joboptions_file ="src/jobOptions.txt";
+    }
     // Create an instance of an application manager
     IInterface* iface = Gaudi::createApplicationMgr();
     
