@@ -21,7 +21,7 @@
 /** @class GuiPause
 * @brief Algorithm to pause execution to  user to examine an event more closely. 
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/userAlg/src/GuiPause.cxx,v 1.6 2003/03/15 22:12:28 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiPause.cxx,v 1.1 2003/11/06 03:22:44 burnett Exp $
 <br> Example jobOptions fragment:
 <pre>
 </pre>
@@ -74,8 +74,8 @@ StatusCode GuiPause::initialize()
         // enable skiping
         gui::DisplayControl& display = m_guiSvc->guiMgr()->display();
         display.menu().addToggle("enable skip", false,
-            new gui::SimpleCommand<GuiPause>(this,GuiPause::enable),
-            new gui::SimpleCommand<GuiPause>(this,GuiPause::disable));
+            new gui::SimpleCommand<GuiPause>(this,&GuiPause::enable),
+            new gui::SimpleCommand<GuiPause>(this,&GuiPause::disable));
     }
     return sc;
 }
