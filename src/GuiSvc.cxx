@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.3 2001/03/01 23:48:03 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.4 2001/04/18 21:01:21 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
@@ -41,7 +41,10 @@ GuiSvc::GuiSvc(const std::string& name,ISvcLocator* svc)
 
 
 
-
+void GuiSvc::pause()
+{
+    m_guiMgr->pause();
+}
 
 
 // initialize

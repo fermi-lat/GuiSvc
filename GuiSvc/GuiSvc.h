@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.4 2001/03/01 23:48:02 igable Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.5 2001/04/18 21:01:21 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 
@@ -24,6 +24,8 @@ class GuiSvc :  public Service, virtual public IIncidentListener,
 public:
     /// only thing this wrapper class does: provide access to the wrapped class
     gui::GuiMgr* guiMgr() {return m_guiMgr;}
+
+    void pause();
 
     // these needed to implement gui::MenuClient interface in order to schedule a quit call.
     void quit();
