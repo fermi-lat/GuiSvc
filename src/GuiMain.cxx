@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiMain.cxx,v 1.1 2001/03/22 21:07:39 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiMain.cxx,v 1.2 2001/04/18 21:01:21 burnett Exp $
 
 // Include files
 #include "GaudiKernel/SmartIF.h"
@@ -20,22 +20,21 @@
   Specify the job options file location by:
   1) specification, local or global, on command line.
   2) content of env var JOBOPTIONS
-  3) src/jobOPtions
+  3) src/jobOptions
 
   */
 int main( int argn, char** argc) {
 
-    std::string joboptions_file;
+    std::string joboptions_file="src/jobOptions.txt"; // default
 
-    // is ther a job options env var defined?
-    const char * job = ::getenv("JOBOPTIONS");
+	const char* job = ::getenv("JOBOPTIONS"); // check for env var
 
-    if( argn>1 ) {job = argc[1];}
+    if( argn>1 ) { joboptions_file = argc[1];} // priority to command arg.
     else if( job ) { joboptions_file = job; }
-    else {
-        // no args, JOBOPTIONS var: assume this.
-        joboptions_file ="src/jobOptions.txt";
-    }
+	std::cerr << "Starting Glast-Gaudi job with job options file " 
+		<< joboptions_file << std::endl;
+
+
     // Create an instance of an application manager
     IInterface* iface = Gaudi::createApplicationMgr();
     
