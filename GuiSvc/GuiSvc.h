@@ -1,4 +1,4 @@
-// $Header:  22:54:50 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.3 2001/02/06 00:07:00 tlindner Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 
@@ -8,6 +8,7 @@
 // includes
 #include "Gaudi/Kernel/Service.h"
 #include "Gaudi/Interfaces/IIncidentListener.h"
+#include "GuiSvc/IGuiSvc.h"
 
 //forward declarations
 namespace gui { class GuiMgr; }
@@ -15,8 +16,8 @@ template <class TYPE> class SvcFactory;
 
 /*!  
 */
-class GuiSvc :  public Service,
-     virtual public IIncidentListener
+class GuiSvc :  public Service, virtual public IIncidentListener, 
+                virtual public IGuiSvc
 {  
 
 
@@ -45,16 +46,16 @@ protected:
     /// Standard Constructor
     GuiSvc ( const std::string& name, ISvcLocator* al );
     
-    /// destructor
-    virtual ~GuiSvc ();
 
 private:
     // Allow SvcFactory to instantiate the service.
     friend class SvcFactory<GuiSvc>;
     void beginEvent();
     void endEvent();
+    //
     void queryEvtMax();
     void queryPause();
+
 
     gui::GuiMgr* m_guiMgr;
     float   m_size;

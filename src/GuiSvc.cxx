@@ -1,4 +1,4 @@
-// $Header: 08 04:29:20 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.2 2001/02/02 05:38:37 burnett Exp $
 // 
 //  Original author: Toby Burnett tburnett@u.washington.edu
 //
@@ -33,16 +33,15 @@ GuiSvc::GuiSvc(const std::string& name,ISvcLocator* svc)
     
     // declare the properties and set defaults
 
-    declareProperty ("size", m_size=-200);
+    declareProperty ("size", m_size=-300);
     declareProperty( "pause_interval", m_pause_interval=0);
     declareProperty( "paused", m_paused=true);
 
 }
 
-/// Standard Destructor
-GuiSvc::~GuiSvc()  
-{
-}
+
+
+
 
 
 // initialize
@@ -77,6 +76,9 @@ StatusCode GuiSvc::initialize ()
     sub_menu.addButton("set max event...",
         new SimpleCommand<GuiSvc>(this, &GuiSvc::queryEvtMax));
 
+    sub_menu.addButton("Quit Loop",
+        new SimpleCommand<GuiSvc>(this, &GuiSvc::quit));
+
     m_guiMgr->menu().add(new MenuClient<GuiSvc>(this)); // schedule callback if exit button pressed
 
     //TODO: make sure it will get to the first event
@@ -91,23 +93,41 @@ void GuiSvc::queryPause()
 }
 void GuiSvc::queryEvtMax()
 {
-    IProperty* appPropMgr=0;
+    IProperty* glastPropMgr=0;
     StatusCode status = 
-        serviceLocator()->getService("ApplicationMgr", IID_IProperty,
-                         reinterpret_cast<IInterface*&>( appPropMgr ));
+        serviceLocator()->getService("EventSelector", IID_IProperty,
+                         reinterpret_cast<IInterface*&>( glastPropMgr ));
     if( status.isFailure() ) return;
       
     IntegerProperty evtMax("EvtMax",0);
-    status = appPropMgr->getProperty( &evtMax );
+    status = glastPropMgr->getProperty( &evtMax );
     if (status.isFailure()) return;
 
     int max_event = evtMax.value();
     m_guiMgr->menu().query("Enter new max_event",& max_event);
 
     evtMax = max_event; 
-    status = appPropMgr->setProperty( evtMax );
-    appPropMgr->release();
+    status = glastPropMgr->setProperty( evtMax );
+    glastPropMgr->release();
 
+}
+
+
+void GuiSvc::quit() {
+    IProperty* glastPropMgr=0;
+    StatusCode status = 
+        serviceLocator()->getService("EventSelector", IID_IProperty,
+                         reinterpret_cast<IInterface*&>( glastPropMgr ));
+    if( status.isFailure() ) return;
+      
+    IntegerProperty evtMax("EvtMax",0);
+    status = glastPropMgr->getProperty( &evtMax );
+    if (status.isFailure()) return;
+
+    evtMax = -1; 
+    status = glastPropMgr->setProperty( evtMax );
+    glastPropMgr->release();
+    m_guiMgr->resume();
 }
 
 // handle "incidents"
@@ -141,11 +161,6 @@ void GuiSvc::endEvent()  // must be called at the end of an event to update, all
     m_guiMgr->end_event();
 }
 
-void GuiSvc::quit()
-{
-    //TODO: make it so that the ApplicationMgr loop ends when next EndEvent incident calls our endEvent
-    //      but there is no easy way to break out of the nextEvent loop.
-}
 
 // finalize
 StatusCode GuiSvc::finalize ()
