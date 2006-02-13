@@ -2,7 +2,7 @@
 * @file GuiSvc.h
 * @brief declaration of the interface for the class GuiSvc, implementing IGuiSvc
 *
-*  $Header:  $
+*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.9 2002/10/14 15:15:56 burnett Exp $
 */
 
 #ifndef _H_GuiSvc_
@@ -24,7 +24,7 @@ class IAppMgrUI;
  * @brief Define a service that gives access to the GUI, specificially to a GuiMgr instance
  *
  * @author Toby Burnett
- * $Header:  $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.9 2002/10/14 15:15:56 burnett Exp $
  *
  * Implements Gaudi's IRunable interface in order to be able to control the event loop; for this requires
  * the following line in the job options file:
@@ -69,7 +69,7 @@ public:
     virtual void handle(const Incident& inc);    
  
    /// Query interface
-   virtual StatusCode queryInterface( const IID& riid, void** ppvUnknown );
+   virtual StatusCode queryInterface( const InterfaceID& riid, void** ppvUnknown );
 
    // for the IRunnable interfce
    virtual StatusCode run();
