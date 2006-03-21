@@ -2,7 +2,7 @@
 * @file GuiSvc.cxx
 * @brief definition of the class GuiSvc
 *
-*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.20 2003/12/01 20:49:42 hansl Exp $
+*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.21 2004/02/19 22:00:26 burnett Exp $
 */
 
 #include "GuiSvc/GuiSvc.h"
@@ -313,7 +313,7 @@ StatusCode GuiSvc::finalize ()
 // Query interface
 // ___________________________________________________________
 
-StatusCode GuiSvc::queryInterface(const IID& riid, void** ppvInterface)  {
+StatusCode GuiSvc::queryInterface(const InterfaceID& riid, void** ppvInterface)  {
     if ( IID_IGuiSvc.versionMatch(riid) )  {
         *ppvInterface = (IGuiSvc*)this;
     }
