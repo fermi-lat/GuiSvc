@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/SConscript,v 1.1 2008/07/09 21:13:42 glastrm Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/SConscript,v 1.2 2008/07/30 17:27:52 ecephas Exp $
 # Authors: T.Burnett <tburnett@u.washington.edu>
 # Version: GuiSvc-03-08-01
 Import('baseEnv')
@@ -9,7 +9,7 @@ progEnv = baseEnv.Clone()
 libEnv = baseEnv.Clone()
 
 libEnv.Tool('GuiSvcLib', depsOnly = 1)
-GuiSvc = libEnv.SharedLibrary('GuiSvc', listFiles(['src/*.cxx']))
+GuiSvc = libEnv.StaticLibrary('GuiSvc', listFiles(['src/*.cxx']))
 
 progEnv.Tool('GuiSvcLib')
 progEnv.Tool('guiLib')
