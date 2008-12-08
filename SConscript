@@ -1,5 +1,5 @@
 # -*- python -*-
-# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/SConscript,v 1.3 2008/07/30 17:33:20 ecephas Exp $
+# $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/SConscript,v 1.4 2008/08/15 21:22:42 ecephas Exp $
 # Authors: T.Burnett <tburnett@u.washington.edu>
 # Version: GuiSvc-03-08-01
 Import('baseEnv')
@@ -19,3 +19,6 @@ if baseEnv['PLATFORM'] != 'win32':
 GuiTest = progEnv.GaudiProgram('GuiTest', listFiles(['src/test/*.cxx']), test = 1)
 
 progEnv.Tool('registerObjects', package = 'GuiSvc', libraries = [GuiSvc], testApps = [GuiTest], includes = listFiles(['GuiSvc/*.h']))
+
+
+
