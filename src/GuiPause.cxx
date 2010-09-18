@@ -21,7 +21,7 @@
 /** @class GuiPause
 * @brief Algorithm to pause execution to  user to examine an event more closely. 
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiPause.cxx,v 1.1 2003/11/06 03:22:44 burnett Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiPause.cxx,v 1.2 2003/11/08 18:33:23 burnett Exp $
 <br> Example jobOptions fragment:
 <pre>
 </pre>
@@ -53,8 +53,9 @@ private:
 // expect that the xxx_load.cxx file contains a call     
 //     DLL_DECL_ALGORITHM( GuiPause );
 
-static const AlgFactory<GuiPause>  Factory;
-const IAlgFactory& GuiPauseFactory = Factory;
+//static const AlgFactory<GuiPause>  Factory;
+//const IAlgFactory& GuiPauseFactory = Factory;
+DECLARE_ALGORITHM_FACTORY(GuiPause);
 
 GuiPause::GuiPause(const std::string& name, ISvcLocator* pSvcLocator)
 :Algorithm(name, pSvcLocator), m_guiSvc(0) , m_enabled(false)
