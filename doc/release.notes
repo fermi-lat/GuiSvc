@@ -4,6 +4,8 @@
  * @verbatim
  * EOH *
 
+ GuiSvc-03-08-02-gr02 28-Sep-2010 hmk Retagging in hopes of getting all files 
+  tagged with CVS-style tag
  GuiSvc-03-08-02-gr01 01-Sep-2010 hmk Update for Gaudi v21r7
  GuiSvc-03-08-02 09-Nov-2009    jrb Updates for SCons
  * v3r8p1  30-oct-2007 HMK patch for using gr_app due to local macro for GuiMain
