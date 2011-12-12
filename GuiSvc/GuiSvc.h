@@ -2,7 +2,7 @@
 * @file GuiSvc.h
 * @brief declaration of the interface for the class GuiSvc, implementing IGuiSvc
 *
-*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.9 2002/10/14 15:15:56 burnett Exp $
+*  $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/GuiSvc/GuiSvc.h,v 1.10.654.1 2011/01/14 03:44:02 heather Exp $
 */
 
 #ifndef _H_GuiSvc_
@@ -14,6 +14,7 @@
 #include "GaudiKernel/IRunable.h"
 
 #include "GuiSvc/IGuiSvc.h"
+#include "GuiSvc/GuiObs.h"
 
 //forward declarations
 namespace gui { class GuiMgr; }
@@ -24,7 +25,7 @@ class IAppMgrUI;
  * @brief Define a service that gives access to the GUI, specificially to a GuiMgr instance
  *
  * @author Toby Burnett
- * $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiSvc.h,v 1.9 2002/10/14 15:15:56 burnett Exp $
+ * $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/GuiSvc/GuiSvc.h,v 1.10.654.1 2011/01/14 03:44:02 heather Exp $
  *
  * Implements Gaudi's IRunable interface in order to be able to control the event loop; for this requires
  * the following line in the job options file:
@@ -95,11 +96,14 @@ private:
     /// Reference to application manager UI
     IAppMgrUI*    m_appMgrUI;
     int m_evtMax;
+    IToolSvc *m_toolSvc; // to handle observer
 
     gui::GuiMgr* m_guiMgr;
     float   m_size;
     int     m_pause_interval;
     bool    m_paused;
+
+    GuiObs *m_guiObs;
 
 };
 
