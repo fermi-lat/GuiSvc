@@ -2,7 +2,7 @@
 * @file GuiSvc.cxx
 * @brief definition of the class GuiSvc
 *
-*  $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/src/GuiSvc.cxx,v 1.22.654.1 2011/01/14 03:44:03 heather Exp $
+*  $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiSvc.cxx,v 1.23 2011/12/12 22:48:56 heather Exp $
 */
 
 #include "GuiSvc/GuiSvc.h"
@@ -32,7 +32,7 @@
 // declare the service factories for the GuiSvc
 //static SvcFactory<GuiSvc> a_factory;
 //const ISvcFactory& GuiSvcFactory = a_factory;
-//DECLARE_SERVICE_FACTORY(GuiSvc);
+DECLARE_SERVICE_FACTORY(GuiSvc);
 
 // ------------------------------------------------
 // Implementation of the GuiSvc class
