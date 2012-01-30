@@ -3,7 +3,7 @@
 // Job options file for Gui test program
 //
 
-
+ApplicationMgr.DLLs   = { "GuiSvc" };
 ApplicationMgr.ExtSvc   = { "GuiSvc" };
 
 
@@ -12,8 +12,9 @@ ApplicationMgr.TopAlg = { "GuiTestAlg/Top" };
 
 // Set output level threshold (2=DEBUG, 3=INFO, 4=WARNING, 5=ERROR, 6=FATAL )
 
-MessageSvc.OutputLevel      = 2;
+MessageSvc.OutputLevel      = 1;
 
+ApplicationMgr.HistogramPersistency = "NONE";
 
 ApplicationMgr.Runable= "GuiSvc";
 

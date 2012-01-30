@@ -1,4 +1,4 @@
-// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/test/GuiTestAlg.cxx,v 1.2 2001/04/18 21:01:22 burnett Exp $
+// $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/test/GuiTestAlg.cxx,v 1.4 2011/12/12 22:48:56 heather Exp $
 
 // Include files
 #include "GuiTestAlg.h"
@@ -11,8 +11,9 @@
 #include "src/test/Demo.h"
 #include "gui/GuiMgr.h"
  
-static const AlgFactory<GuiTestAlg>  Factory;
-const IAlgFactory& GuiTestAlgFactory = Factory;
+//static const AlgFactory<GuiTestAlg>  Factory;
+//const IAlgFactory& GuiTestAlgFactory = Factory;
+DECLARE_ALGORITHM_FACTORY(GuiTestAlg);
 
 
 //------------------------------------------------------------------------------
