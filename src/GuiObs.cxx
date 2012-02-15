@@ -6,7 +6,7 @@ gets adresses
  and sets seeds for them based on run and particle sequence
  number obtained from the MCHeader
 
- $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/src/Attic/GuiObs.cxx,v 1.1.4.1 2011/01/14 03:44:03 heather Exp $
+ $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiObs.cxx,v 1.2 2011/12/12 22:48:56 heather Exp $
 
  Author: Toby Burnett, Karl Young
 */
@@ -32,11 +32,11 @@ GuiObs::GuiObs():IToolSvc::Observer(),m_guiMgr(0)
 }
 
 
-void GuiObs::onCreate(IAlgTool& tool) {
+void GuiObs::onCreate(const IAlgTool* tool) {
 
 
     IGuiTool* gtool;
-    StatusCode status =tool.queryInterface( IGuiTool::interfaceID(), (void**)&gtool);
+    StatusCode status =const_cast<IAlgTool*>(tool)->queryInterface( IGuiTool::interfaceID(), (void**)&gtool);
     if( status.isSuccess() ){
         gtool->initialize(m_guiMgr);
     }

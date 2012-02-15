@@ -1,6 +1,6 @@
 /* Definition of the class GuiObs
 
-$Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/GuiSvc/Attic/GuiObs.h,v 1.1.4.1 2011/01/14 03:44:01 heather Exp $
+$Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiObs.h,v 1.2 2011/12/12 22:48:56 heather Exp $
 
 */
 #ifndef _GuiObs_H
@@ -31,7 +31,7 @@ $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/GuiSvc/Attic/Gui
 *
 * @authors Toby Burnett, Karl Young
 *
-* $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/GuiSvc/Attic/GuiObs.h,v 1.1.4.1 2011/01/14 03:44:01 heather Exp $
+* $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/GuiSvc/GuiObs.h,v 1.2 2011/12/12 22:48:56 heather Exp $
 */
 class GuiObs : public IToolSvc::Observer
 {
@@ -41,9 +41,9 @@ public:
 
     virtual ~GuiObs();
 
-    void onCreate(IAlgTool& tool);
+    void onCreate(const IAlgTool* tool);
    
-    void onRetrieve(IAlgTool& tool) { }
+    void onRetrieve(const IAlgTool* tool) { }
 
     void setGuiMgr(gui::GuiMgr* guiMgr) { m_guiMgr = guiMgr; }
 
