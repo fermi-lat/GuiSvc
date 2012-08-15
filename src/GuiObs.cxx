@@ -6,13 +6,12 @@ gets adresses
  and sets seeds for them based on run and particle sequence
  number obtained from the MCHeader
 
- $Header: /nfs/slac/g/glast/ground/cvs/GuiSvc/src/GuiObs.cxx,v 1.2 2011/12/12 22:48:56 heather Exp $
+ $Header: /nfs/slac/g/glast/ground/cvs/GlastRelease-scons/GuiSvc/src/GuiObs.cxx,v 1.3 2012/02/15 20:19:23 heather Exp $
 
  Author: Toby Burnett, Karl Young
 */
 
 #include "GuiSvc/GuiObs.h"
-#include "facilities/Util.h"
 
 #include <iterator>
 #include <fstream>
